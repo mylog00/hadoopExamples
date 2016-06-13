@@ -1,3 +1,5 @@
+# For reducer phase 2 user word-counter reducer
+
 # Sample Input:
 # 1,a
 # 2,a
