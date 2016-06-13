@@ -1,4 +1,4 @@
-package wordcounter;
+package stepic.wordcounter;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
