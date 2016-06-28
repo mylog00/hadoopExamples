@@ -1,0 +1,21 @@
+/*
+test file
+
+user1,Funny Story,1343182026191
+user2,Cool Deal,1343182133839
+user4,Interesting Post,1343182154633
+user5,Yet Another Blog,13431839394
+*/
+--prepare table scheme
+CREATE TABLE posts (user STRING, post STRING, time BIGINT)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE;
+--load data from file (overwrite table if exist)
+LOAD DATA LOCAL INPATH 'input.txt' OVERWRITE INTO TABLE posts;
+--row number
+SELECT count(1) FROM posts;
+SELECT * FROM posts WHERE user="user2";
+SELECT * FROM posts WHERE time<=1343182133839 LIMIT 2;
+--join example
+INSERT OVERWRITE TABLE posts_like SELECT p.user, p.post, l.count FROM posts p JOIN likes l ON (p.user=l.user);
